@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">POCcinemaMVI</string>
+
+    <string name="api_key">cef2fa974d995afe227689ee5928c509</string>
+    <string name="discover">Discover</string>
+    <string name="app_title">Movies app</string>
+    <string name="plot_summary">Plot summary</string>
+    <string name="cast_and_crew"><![CDATA[Cast & Crew]]></string>
+    <string name="trending">Trending</string>
+    <string name="popular">Popular</string>
+    <string name="hint_search_query">Search for movie, tv show or person</string>
+    <string name="make_search">Make a search of movies, tv series and persons!</string>
+    <string name="filmography">Filmography</string>
+    <string name="production">Production</string>
+    <string name="nothing_to_show">There is nothing to show here</string>
+    <string name="favourite_movies">Favourite Movies</string>
+    <string name="favourite_tv_series">Favourite TV Series</string>
+    <string name="empty_playlists">Your playlists is empty or not created. Please add something to it!</string>
+    <string name="movie_added_to_playlist">Movie added to playlist</string>
+    <string name="tv_series_added_to_playlist">TV Series added to playlist</string>
+    <string name="select_playlist_for">Select playlist for movie:</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="error_str">ERROR</string>
+</resources>
