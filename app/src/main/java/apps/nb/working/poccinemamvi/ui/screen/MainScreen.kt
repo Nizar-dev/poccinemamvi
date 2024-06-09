@@ -16,8 +16,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,8 +27,10 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.paging.compose.collectAsLazyPagingItems
 import apps.nb.working.poccinemamvi.ui.navigation.Screen
 import apps.nb.working.poccinemamvi.ui.viewmodel.DiscoverMoviesViewModel
+import org.orbitmvi.orbit.compose.collectAsState
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -34,6 +38,8 @@ fun MainScreen(
     navHostController: NavHostController,
     discoverMoviesViewModel: DiscoverMoviesViewModel
 ) {
+    val discoverMoviesState by discoverMoviesViewModel.discoverMoviesState.collectAsState()
+    val moviesPagingData = discoverMoviesState.movies.collectAsLazyPagingItems()
     val isBottomBarVisible = rememberSaveable {
         mutableStateOf(false)
     }
@@ -41,7 +47,8 @@ fun MainScreen(
 
     isBottomBarVisible.value = true
     Scaffold(
-       bottomBar = {
+        topBar = { CustomTopAppBar(title = "Les films populaires du moment") },
+        bottomBar = {
             AnimatedVisibility(
                 visible = isBottomBarVisible.value,
                 enter = slideInVertically(initialOffsetY = { it }),
@@ -53,25 +60,32 @@ fun MainScreen(
                         listOf(
                             Screen.MainScreen(),
                             Screen.ResultScreen(),
-                            Screen.MovieDetails(),
+                            Screen.MovieScreen(),
                         )
                     )
                 }
             }
         }
     ) {
-        Scaffold { innerPadding ->
         Column(modifier = Modifier
-            .padding(innerPadding)
+            .padding(it)
             .fillMaxWidth()
         ) {
-
             Spacer(modifier = Modifier.height(16.dp))
-//            CarouselPhotos(items = popularMovies ?: emptyList(), onItemClicked = {
-//                onMovieClick(it)
-//                navController.navigate(AppScreen.MainGraph.DetailScreen.route)
-//            })
 
+            // Affichage du carousel s'il y a des données disponibles
+            if (moviesPagingData.itemCount>0) {
+                CarouselPhotos(
+                    pagingItems = moviesPagingData,
+                    onItemClicked = { /* Gérer l'action lorsqu'un élément est cliqué */ }
+                )
+            } else {
+                // Afficher un indicateur de chargement ou un message d'erreur en cas de données vides
+                Text(
+                    text = "Aucun film disponible pour le moment.",
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
             Text(
@@ -83,22 +97,9 @@ fun MainScreen(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(16.dp))
-//            OutlinedTextField(
-//                value = searchText.value,
-//                onValueChange = {    searchText.value = it
-//                    onTextChange(searchText.value)},
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(16.dp),
-//                label = {
-//                    Text( text = "Saisir le titre du film")
-//                },)
-            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
-//                    Log.d("MainScreenButton", "titre recherché: ${searchText.value}")
-//                    onButtonClick(searchText.value)
-//                    navController.navigate(AppScreen.MainGraph.ResultScreen.route)
+                    // Effectuer une action lorsqu'un bouton est cliqué
                 },
                 modifier = Modifier
                     .clipToBounds()
@@ -115,4 +116,3 @@ fun MainScreen(
         }
     }
 }
-    }

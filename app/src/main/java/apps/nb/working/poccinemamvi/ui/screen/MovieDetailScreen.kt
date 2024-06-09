@@ -13,7 +13,9 @@ import apps.nb.working.poccinemamvi.ui.navigation.Screen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MovieDetailsView(navHostController: NavHostController) {
+fun MovieDetailScreen(navHostController: NavHostController,
+                      //movieDetailsViewModel: MovieDetailsViewModel
+) {
 
     Scaffold(
         bottomBar = {
@@ -28,7 +30,7 @@ fun MovieDetailsView(navHostController: NavHostController) {
                         listOf(
                             Screen.MainScreen(),
                             Screen.ResultScreen(),
-                            Screen.MovieDetails(),
+                            Screen.MovieScreen(),
                         )
                     )
                 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import apps.nb.working.poccinemamvi.ui.navigation.Screen
@@ -83,16 +84,19 @@ fun BasicItem(
     ) {
         Spacer(modifier = Modifier.width(15.dp))
         Icon(
-            modifier = Modifier.padding(top = 15.dp, bottom = 15.dp),
+            modifier = Modifier
+                .padding(top = 15.dp, bottom = 15.dp)
+                .height(85.dp),
             imageVector = icon,
             contentDescription = "",
-            tint = if (isSelected) Color.White else Color.Gray
+            tint = if (isSelected) Color.Red else Color.Gray
 
         )
         if (isSelected) {
             Spacer(modifier = Modifier.width(15.dp))
             Text(
                 text = title,
+                fontSize = 24.sp,
                 color = Color.Black,
                 maxLines = 1
             )

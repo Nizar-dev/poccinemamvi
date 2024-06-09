@@ -6,15 +6,22 @@ import apps.nb.working.pocmoviesbymvi.data.source.remote.BasicMoviesResponse
 import apps.nb.working.pocmoviesbymvi.data.source.remote.MovieDetailsResponse
 
 
-fun convertApiResponseToMovies(apiResponse: BasicMoviesResponse<MovieDiscoverItem>): List<MovieDiscoverItem> {
-    return apiResponse.results?.map { results ->
+fun convertApiResponseToMovies(apiResponse: BasicMoviesResponse<MovieDetailsResponse>): List<MovieDiscoverItem> {
+    return apiResponse.results?.map { result ->
         MovieDiscoverItem(
-            id = results.id,
-            title = results.title,
-            overview = results.overview,
-            posterPath = "https://image.tmdb.org/t/p/w500${results.posterPath}",
-            releaseDate = results.releaseDate,
-            voteAverage = results.voteAverage
+            adult = result.adult,
+            backdropPath = result.backdropPath,
+            id = result.id,
+            originalLanguage = result.originalLanguage,
+            originalTitle = result.originalTitle,
+            overview = result.overview,
+            popularity = result.popularity,
+            posterPath = "https://image.tmdb.org/t/p/w500${result.posterPath}",
+            releaseDate = result.releaseDate,
+            title = result.title,
+            video = result.video,
+            voteAverage = result.voteAverage,
+            voteCount = result.voteCount
         )
     } ?: emptyList()
 }

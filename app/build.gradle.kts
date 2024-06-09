@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+
+
     id("com.google.dagger.hilt.android")
 
     id ("kotlin-kapt")
@@ -63,7 +66,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.material)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,23 +75,36 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    /**
+     * Retrofit
+     */
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+//    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+
+    /**
+     * Coroutine
+     */
+    //Coroutine
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    implementation ("com.google.code.gson:gson:2.8.6")
+
+    // Dagger hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation ("androidx.navigation:navigation-compose:2.5.3")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:1.4.0")
+
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.4.0")
+
     //Pagination
     implementation("androidx.paging:paging-runtime:3.3.0")
     implementation("androidx.paging:paging-compose:3.3.0")
-
-    //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.7")
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-
-    //Hilt
-    // Dagger hilt
-    implementation("com.google.dagger:hilt-android:2.50")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-    kapt("com.google.dagger:hilt-android-compiler:2.51")
-
 
     // Orbit MVI core
     implementation("org.orbit-mvi:orbit-core:7.2.0")

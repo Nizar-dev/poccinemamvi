@@ -18,7 +18,7 @@ interface ApiService {
         @Query("sort_by") sortBy: String? = "popularity.desc",
         @Query("include_adult") includeAdult: Boolean = true,
         @Query("include_video") includeVideo: Boolean = true,
-    ): Response<BasicMoviesResponse<MovieDiscoverItem>>
+    ): Response<BasicMoviesResponse<MovieDetailsResponse>>
 
     @GET("search/movie")
     suspend fun getMoviesByTitle(

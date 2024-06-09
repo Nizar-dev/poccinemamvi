@@ -1,7 +1,7 @@
 package apps.nb.working.pocmoviesbymvi.ui.state
 
 
-data class SearchState(
+data class ResultState(
     val query: String = "",
     val isLoading: Boolean = false,
     val currentPageIndex: Int = -1,

@@ -25,10 +25,10 @@ sealed class Screen(
 
 
 
-    data class MovieDetails(
+    data class MovieScreen(
         override val title: String = "movie_details_screen",
         override val icon: ImageVector = Icons.Filled.Info,
-        override val route: String = "movie_details"
+        override val route: String = "movie_screen"
     ) : Screen(route = route)
 
 }

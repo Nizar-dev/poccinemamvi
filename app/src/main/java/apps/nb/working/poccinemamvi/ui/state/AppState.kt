@@ -1,12 +1,13 @@
 package apps.nb.working.poccinemamvi.ui.state
 
-import apps.nb.working.pocmoviesbymvi.ui.state.HomeState
+import apps.nb.working.pocmoviesbymvi.ui.state.DiscoverMoviesState
 import apps.nb.working.pocmoviesbymvi.ui.state.MovieDetailsState
-import apps.nb.working.pocmoviesbymvi.ui.state.SearchState
+import apps.nb.working.pocmoviesbymvi.ui.state.ResultState
+
 
 
 data class AppState(
-    val homeState: HomeState = HomeState(),
-    val movieDetailsState: List<MovieDetailsState> = listOf(),
-    val searchState: SearchState = SearchState(),
+    val discoverMoviesState: DiscoverMoviesState = DiscoverMoviesState(),
+    val movieDetailsState: MovieDetailsState = MovieDetailsState(),
+    val resultState: ResultState = ResultState()
 )
